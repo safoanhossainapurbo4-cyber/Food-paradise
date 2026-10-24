@@ -3,26 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Food Paradise | Taste the Happiness</title>
+    <title>Food Paradise | Luxury Dining & Online Food Order</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
-    <!-- Font Awesome Icons -->
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <style>
         :root {
-            --primary-red: #8B0000;       /* Dark Red */
-            --primary-hover: #6a0000;
-            --secondary-white: #FFFFFF;    /* White */
-            --bg-cream: #FDFBF7;           /* Premium Light Cream */
-            --bg-card: #FFFFFF;
+            --primary-red: #8B0000;
+            --primary-dark: #630000;
+            --secondary-cream: #FDFBF7;
+            --secondary-white: #FFFFFF;
+            --accent-gold: #D4AF37;
             --text-dark: #221A1A;
             --text-muted: #6B6262;
-            --accent-gold: #D4AF37;
+            --border-color: #EADFD7;
             --shadow-soft: 0 10px 30px rgba(139, 0, 0, 0.08);
-            --shadow-hover: 0 20px 40px rgba(139, 0, 0, 0.16);
+            --shadow-hover: 0 16px 36px rgba(139, 0, 0, 0.16);
             --transition: all 0.3s ease;
         }
 
@@ -35,93 +35,99 @@
         }
 
         body {
-            background-color: var(--bg-cream);
+            background-color: var(--secondary-cream);
             color: var(--text-dark);
             line-height: 1.6;
             overflow-x: hidden;
         }
 
-        /* --- NAVIGATION BAR --- */
+        /* --- LOGO STYLING --- */
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+        .brand-logo svg {
+            width: 44px;
+            height: 44px;
+        }
+        .brand-text h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.45rem;
+            color: var(--primary-red);
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            line-height: 1;
+        }
+        .brand-text span {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent-gold);
+            font-weight: 700;
+        }
+
+        /* --- NAVBAR --- */
         header {
             position: sticky;
             top: 0;
             background: rgba(253, 251, 247, 0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
             z-index: 1000;
-            padding: 1rem 5%;
+            padding: 0.9rem 5%;
             display: flex;
             align-items: center;
             justify-content: space-between;
         }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-family: 'Playfair Display', serif;
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: var(--primary-red);
-            text-decoration: none;
-        }
-
-        .logo i {
-            font-size: 1.8rem;
-        }
-
         nav ul {
             display: flex;
             list-style: none;
-            gap: 2rem;
+            gap: 1.8rem;
             align-items: center;
         }
-
         nav a {
             text-decoration: none;
             color: var(--text-dark);
             font-weight: 600;
-            font-size: 1rem;
+            font-size: 0.95rem;
             transition: var(--transition);
         }
-
-        nav a:hover, nav a.active {
+        nav a:hover {
             color: var(--primary-red);
         }
-
         .nav-actions {
             display: flex;
             align-items: center;
-            gap: 1.2rem;
+            gap: 1rem;
         }
-
-        .cart-icon {
+        .action-circle-btn {
             position: relative;
             cursor: pointer;
-            font-size: 1.3rem;
-            color: var(--primary-red);
-            background: rgba(139, 0, 0, 0.08);
-            width: 44px;
-            height: 44px;
+            width: 42px;
+            height: 42px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
+            background: #fff;
+            border: 1px solid var(--border-color);
+            color: var(--primary-red);
+            font-size: 1.1rem;
             transition: var(--transition);
         }
-
-        .cart-icon:hover {
+        .action-circle-btn:hover {
             background: var(--primary-red);
-            color: var(--secondary-white);
+            color: #fff;
         }
-
-        .cart-badge {
+        .badge {
             position: absolute;
-            top: -4px;
-            right: -4px;
+            top: -5px;
+            right: -5px;
             background: var(--primary-red);
-            color: var(--secondary-white);
-            font-size: 0.75rem;
+            color: #fff;
+            font-size: 0.7rem;
             font-weight: bold;
             width: 20px;
             height: 20px;
@@ -129,10 +135,9 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            border: 2px solid var(--secondary-white);
+            border: 2px solid #fff;
         }
-
-        .mobile-menu-btn {
+        .mobile-toggle {
             display: none;
             font-size: 1.5rem;
             background: none;
@@ -143,508 +148,538 @@
 
         /* --- BUTTONS --- */
         .btn-red {
-            background-color: var(--primary-red);
-            color: var(--secondary-white);
-            padding: 0.85rem 1.8rem;
-            border: none;
+            background: var(--primary-red);
+            color: #fff;
+            padding: 0.75rem 1.6rem;
             border-radius: 50px;
-            font-size: 1rem;
             font-weight: 600;
+            font-size: 0.95rem;
+            border: none;
             cursor: pointer;
-            text-decoration: none;
             display: inline-flex;
             align-items: center;
             gap: 8px;
             transition: var(--transition);
+            text-decoration: none;
             box-shadow: 0 4px 15px rgba(139, 0, 0, 0.25);
         }
-
         .btn-red:hover {
-            background-color: var(--primary-hover);
+            background: var(--primary-dark);
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(139, 0, 0, 0.35);
         }
-
-        .btn-outline {
-            background: transparent;
-            color: var(--primary-red);
-            border: 2px solid var(--primary-red);
-            padding: 0.8rem 1.8rem;
+        .btn-gold {
+            background: var(--accent-gold);
+            color: #000;
+            padding: 0.6rem 1.2rem;
             border-radius: 50px;
-            font-size: 1rem;
-            font-weight: 600;
-            text-decoration: none;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
             transition: var(--transition);
+            text-decoration: none;
+        }
+        .btn-gold:hover {
+            opacity: 0.9;
         }
 
-        .btn-outline:hover {
-            background: var(--primary-red);
-            color: var(--secondary-white);
+        /* --- HERO & PROMO BANNER --- */
+        .promo-top-bar {
+            background: #181111;
+            color: #fff;
+            text-align: center;
+            padding: 8px;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
         }
-
-        /* --- HERO SECTION --- */
+        .promo-top-bar span {
+            color: var(--accent-gold);
+            font-weight: 700;
+        }
         .hero {
             display: grid;
             grid-template-columns: 1.1fr 1fr;
-            min-height: calc(100vh - 80px);
+            min-height: 80vh;
             align-items: center;
-            padding: 2rem 5% 4rem;
+            padding: 2.5rem 5% 4rem;
             gap: 3rem;
-            position: relative;
         }
-
         .hero-tag {
-            display: inline-block;
             background: rgba(139, 0, 0, 0.1);
             color: var(--primary-red);
-            padding: 6px 16px;
+            padding: 6px 14px;
             border-radius: 30px;
             font-weight: 700;
-            font-size: 0.85rem;
-            letter-spacing: 1px;
+            font-size: 0.8rem;
             text-transform: uppercase;
-            margin-bottom: 1.2rem;
+            display: inline-block;
+            margin-bottom: 1rem;
         }
-
         .hero h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 3.5rem;
-            line-height: 1.18;
-            color: var(--text-dark);
-            margin-bottom: 1.5rem;
+            font-size: 3.4rem;
+            line-height: 1.15;
+            margin-bottom: 1.2rem;
         }
-
         .hero h1 span {
             color: var(--primary-red);
             display: block;
         }
-
         .hero p {
             color: var(--text-muted);
-            font-size: 1.15rem;
-            margin-bottom: 2.2rem;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
             max-width: 520px;
         }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .hero-image-wrapper {
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .hero-circle-bg {
-            position: absolute;
-            width: 440px;
-            height: 440px;
-            background: radial-gradient(circle, rgba(139, 0, 0, 0.15) 0%, rgba(253, 251, 247, 0) 70%);
-            border-radius: 50%;
-            z-index: 1;
-        }
-
         .hero-img {
             width: 100%;
-            max-width: 520px;
-            height: 480px;
+            max-width: 500px;
+            height: 440px;
             object-fit: cover;
-            border-radius: 30px;
-            position: relative;
-            z-index: 2;
+            border-radius: 28px;
             box-shadow: var(--shadow-hover);
-            transition: var(--transition);
+            border: 4px solid #fff;
         }
 
-        .hero-img:hover {
-            transform: scale(1.02);
-        }
-
-        .badge-floating {
-            position: absolute;
-            bottom: 25px;
-            left: 10px;
-            background: var(--secondary-white);
-            padding: 12px 20px;
-            border-radius: 16px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            z-index: 3;
-        }
-
-        .badge-floating i {
-            font-size: 1.8rem;
-            color: var(--accent-gold);
-        }
-
-        /* --- SECTION COMMONS --- */
-        section {
-            padding: 5rem 5%;
-        }
-
+        /* --- SPECIAL OFFERS SLIDER/GRID --- */
         .section-header {
             text-align: center;
             max-width: 650px;
-            margin: 0 auto 3.5rem;
+            margin: 0 auto 2.5rem;
         }
-
         .section-header span {
             color: var(--primary-red);
             font-weight: 700;
             text-transform: uppercase;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             letter-spacing: 1.5px;
         }
-
         .section-header h2 {
             font-family: 'Playfair Display', serif;
-            font-size: 2.6rem;
-            margin-top: 0.5rem;
-            color: var(--text-dark);
+            font-size: 2.4rem;
+            margin-top: 0.4rem;
         }
-
-        /* --- MENU SECTION --- */
-        .menu-grid {
+        .offers-banner-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            padding: 0 5% 4rem;
         }
-
-        .menu-card {
-            background: var(--bg-card);
+        .offer-card {
+            background: linear-gradient(135deg, #8B0000 0%, #3d0000 100%);
+            color: #fff;
+            padding: 1.8rem;
             border-radius: 20px;
-            overflow: hidden;
-            box-shadow: var(--shadow-soft);
-            transition: var(--transition);
-            display: flex;
-            flex-direction: column;
-            border: 1px solid rgba(139, 0, 0, 0.05);
-        }
-
-        .menu-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-hover);
-        }
-
-        .menu-img-container {
-            width: 100%;
-            height: 220px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .menu-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .menu-card:hover .menu-img {
-            transform: scale(1.08);
-        }
-
-        .menu-price {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: var(--primary-red);
-            color: var(--secondary-white);
-            font-weight: 700;
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 0.95rem;
-        }
-
-        .menu-details {
-            padding: 1.5rem;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-        }
-
-        .menu-details h3 {
-            font-size: 1.25rem;
-            margin-bottom: 0.5rem;
-            color: var(--text-dark);
-        }
-
-        .menu-details p {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            margin-bottom: 1.2rem;
-            flex-grow: 1;
-        }
-
-        .menu-footer {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            box-shadow: var(--shadow-soft);
         }
-
-        .rating {
-            color: var(--accent-gold);
+        .offer-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            margin-bottom: 5px;
+        }
+        .offer-card p {
             font-size: 0.85rem;
+            color: #ddd;
+            margin-bottom: 10px;
+        }
+        .offer-code {
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 0.9rem;
+            font-weight: bold;
+            color: var(--accent-gold);
         }
 
-        .btn-add-cart {
-            background: rgba(139, 0, 0, 0.08);
-            color: var(--primary-red);
-            border: none;
-            padding: 8px 16px;
-            border-radius: 20px;
+        /* --- FILTER & SEARCH --- */
+        .menu-controls {
+            padding: 0 5% 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .search-box {
+            position: relative;
+            flex: 1;
+            max-width: 380px;
+        }
+        .search-box input {
+            width: 100%;
+            padding: 10px 16px 10px 42px;
+            border-radius: 30px;
+            border: 1px solid var(--border-color);
+            outline: none;
+            font-size: 0.95rem;
+            background: #fff;
+        }
+        .search-box i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+        }
+        .category-tabs {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        .cat-btn {
+            background: #fff;
+            border: 1px solid var(--border-color);
+            padding: 8px 18px;
+            border-radius: 30px;
+            font-size: 0.9rem;
             font-weight: 600;
             cursor: pointer;
             transition: var(--transition);
         }
-
-        .btn-add-cart:hover {
+        .cat-btn.active, .cat-btn:hover {
             background: var(--primary-red);
-            color: var(--secondary-white);
+            color: #fff;
+            border-color: var(--primary-red);
         }
 
-        /* --- ABOUT SECTION --- */
-        .about {
-            background: rgba(139, 0, 0, 0.02);
-        }
-
-        .about-container {
+        /* --- FOOD GRID --- */
+        .food-grid {
             display: grid;
-            grid-template-columns: 1fr 1.1fr;
-            gap: 4rem;
-            align-items: center;
+            grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+            gap: 2rem;
+            padding: 0 5% 5rem;
         }
-
-        .about-images {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-        }
-
-        .about-images img {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-            border-radius: 16px;
+        .food-card {
+            background: #fff;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(139, 0, 0, 0.06);
             box-shadow: var(--shadow-soft);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
         }
-
-        .about-content h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.6rem;
-            margin-bottom: 1.2rem;
-            color: var(--text-dark);
+        .food-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-hover);
         }
-
-        .about-content p {
+        .food-thumb {
+            width: 100%;
+            height: 200px;
+            position: relative;
+            overflow: hidden;
+        }
+        .food-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+        .food-card:hover .food-thumb img {
+            transform: scale(1.06);
+        }
+        .food-cat-badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: rgba(0,0,0,0.6);
+            color: #fff;
+            font-size: 0.75rem;
+            padding: 4px 10px;
+            border-radius: 12px;
+            backdrop-filter: blur(4px);
+        }
+        .food-content {
+            padding: 1.4rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        .food-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+        .food-desc {
             color: var(--text-muted);
-            margin-bottom: 1.5rem;
-            font-size: 1.05rem;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+            flex-grow: 1;
         }
-
-        .features-list {
-            list-style: none;
-            margin-bottom: 2rem;
-        }
-
-        .features-list li {
-            margin-bottom: 0.8rem;
+        .food-price-row {
             display: flex;
             align-items: center;
-            gap: 10px;
-            font-weight: 600;
+            justify-content: space-between;
+            margin-top: auto;
         }
-
-        .features-list i {
+        .food-price {
+            font-size: 1.25rem;
+            font-weight: 800;
             color: var(--primary-red);
         }
 
-        /* --- CONTACT SECTION --- */
-        .contact-container {
+        /* --- ORDER TRACKING SECTION --- */
+        .track-section {
+            background: #fff;
+            border-radius: 24px;
+            padding: 3rem 5%;
+            margin: 0 5% 5rem;
+            box-shadow: var(--shadow-soft);
+            text-align: center;
+        }
+        .track-input-group {
+            display: flex;
+            max-width: 480px;
+            margin: 1.5rem auto;
+            gap: 10px;
+        }
+        .track-input-group input {
+            flex: 1;
+            padding: 12px 18px;
+            border-radius: 30px;
+            border: 1px solid var(--border-color);
+            outline: none;
+        }
+
+        /* --- REVIEWS SECTION --- */
+        .reviews-section {
+            padding: 0 5% 5rem;
+        }
+        .review-box-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .review-card {
+            background: #fff;
+            padding: 1.5rem;
+            border-radius: 18px;
+            box-shadow: var(--shadow-soft);
+            border-left: 4px solid var(--primary-red);
+        }
+        .review-stars {
+            color: var(--accent-gold);
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+        }
+
+        /* --- CONTACT & MAP --- */
+        .contact-grid {
             display: grid;
             grid-template-columns: 1fr 1.2fr;
-            gap: 3rem;
-            background: var(--secondary-white);
-            border-radius: 24px;
-            padding: 3.5rem;
+            gap: 2.5rem;
+            padding: 0 5% 5rem;
+        }
+        .contact-box {
+            background: #fff;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow-soft);
+        }
+        .map-frame {
+            width: 100%;
+            height: 100%;
+            min-height: 380px;
+            border-radius: 20px;
+            border: none;
             box-shadow: var(--shadow-soft);
         }
 
-        .contact-info h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            margin-bottom: 1rem;
+        /* --- MODALS (CART, CHECKOUT, ADMIN, TRACKING RESULT) --- */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.65);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            padding: 1rem;
+            backdrop-filter: blur(4px);
         }
-
-        .contact-info p {
+        .modal.active {
+            display: flex;
+        }
+        .modal-content {
+            background: #fff;
+            border-radius: 20px;
+            width: 100%;
+            max-width: 620px;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 2rem;
+            position: relative;
+        }
+        .modal-close {
+            position: absolute;
+            top: 1.2rem;
+            right: 1.2rem;
+            background: none;
+            border: none;
+            font-size: 1.4rem;
+            cursor: pointer;
             color: var(--text-muted);
-            margin-bottom: 2rem;
         }
 
-        .contact-item {
+        /* --- CART LIST --- */
+        .cart-item-row {
             display: flex;
             align-items: center;
-            gap: 15px;
-            margin-bottom: 1.5rem;
+            justify-content: space-between;
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .qty-controls {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .qty-btn {
+            background: var(--secondary-cream);
+            border: 1px solid #ddd;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-weight: bold;
         }
 
-        .contact-item i {
-            width: 45px;
-            height: 45px;
-            background: rgba(139, 0, 0, 0.08);
+        /* --- PAYMENT SELECTOR --- */
+        .payment-methods {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin: 1rem 0;
+        }
+        .pay-option {
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            padding: 10px 5px;
+            text-align: center;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 0.85rem;
+            transition: var(--transition);
+        }
+        .pay-option.selected {
+            border-color: var(--primary-red);
+            background: rgba(139, 0, 0, 0.05);
             color: var(--primary-red);
+        }
+
+        /* --- ADMIN DASHBOARD PANEL --- */
+        .admin-modal {
+            max-width: 950px;
+        }
+        .admin-nav-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+        }
+        .admin-tab-btn {
+            background: none;
+            border: none;
+            font-weight: 700;
+            padding: 8px 16px;
+            cursor: pointer;
+            border-radius: 8px;
+        }
+        .admin-tab-btn.active {
+            background: var(--primary-red);
+            color: #fff;
+        }
+        .admin-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+        }
+        .admin-table th, .admin-table td {
+            padding: 10px;
+            border: 1px solid #eee;
+            text-align: left;
+        }
+        .admin-table th {
+            background: #fcf9f6;
+        }
+        .status-badge {
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            display: inline-block;
+        }
+        .status-Pending { background: #ffeeba; color: #856404; }
+        .status-Confirmed { background: #b8daff; color: #004085; }
+        .status-Cooking { background: #c3e6cb; color: #155724; }
+        .status-Delivered { background: #d4edda; color: #155724; }
+
+        /* --- WHATSAPP FLOATING BUTTON --- */
+        .wa-float {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background-color: #25d366;
+            color: #fff;
             border-radius: 50%;
+            width: 55px;
+            height: 55px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.1rem;
-        }
-
-        .contact-form form {
-            display: flex;
-            flex-direction: column;
-            gap: 1.2rem;
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-        }
-
-        .form-group label {
-            font-size: 0.9rem;
-            font-weight: 600;
-        }
-
-        .form-group input, .form-group textarea {
-            padding: 12px 16px;
-            border-radius: 12px;
-            border: 1px solid #E0DADA;
-            background: var(--bg-cream);
-            outline: none;
-            font-size: 0.95rem;
+            font-size: 30px;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            z-index: 999;
+            text-decoration: none;
             transition: var(--transition);
         }
-
-        .form-group input:focus, .form-group textarea:focus {
-            border-color: var(--primary-red);
-            box-shadow: 0 0 0 3px rgba(139, 0, 0, 0.1);
+        .wa-float:hover {
+            transform: scale(1.1);
         }
 
         /* --- FOOTER --- */
         footer {
             background: #181111;
-            color: var(--secondary-white);
+            color: #fff;
             padding: 4rem 5% 1.5rem;
-            margin-top: 4rem;
         }
-
-        .footer-content {
+        .footer-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 2.5rem;
             margin-bottom: 3rem;
         }
-
-        .footer-col h4 {
-            font-size: 1.2rem;
-            margin-bottom: 1.2rem;
-            color: var(--secondary-white);
-            position: relative;
-        }
-
-        .footer-col p {
-            color: #A09696;
-            font-size: 0.95rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 0.8rem;
-        }
-
-        .footer-links a {
-            color: #A09696;
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .footer-links a:hover {
-            color: var(--secondary-white);
-            padding-left: 5px;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 10px;
-        }
-
-        .social-links a {
-            width: 38px;
-            height: 38px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.08);
-            color: var(--secondary-white);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .social-links a:hover {
-            background: var(--primary-red);
-        }
-
         .footer-bottom {
             text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
-            color: #7A7070;
-            font-size: 0.9rem;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding-top: 1.5rem;
+            font-size: 0.85rem;
+            color: #888;
         }
 
-        /* --- MOBILE RESPONSIVE --- */
-        @media (max-width: 992px) {
+        /* --- RESPONSIVE --- */
+        @media (max-width: 900px) {
             .hero {
                 grid-template-columns: 1fr;
                 text-align: center;
-                padding-top: 3rem;
             }
-
-            .hero h1 {
-                font-size: 2.8rem;
-            }
-
             .hero p {
                 margin: 0 auto 2rem;
             }
-
-            .hero-buttons {
-                justify-content: center;
-            }
-
-            .about-container {
+            .contact-grid {
                 grid-template-columns: 1fr;
-            }
-
-            .contact-container {
-                grid-template-columns: 1fr;
-                padding: 2rem;
             }
         }
-
         @media (max-width: 768px) {
             nav ul {
                 display: none;
@@ -652,318 +687,804 @@
                 top: 100%;
                 left: 0;
                 width: 100%;
-                background: var(--bg-cream);
+                background: var(--secondary-cream);
                 flex-direction: column;
-                padding: 1.5rem 0;
-                box-shadow: 0 10px 15px rgba(0,0,0,0.05);
+                padding: 1.5rem;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
             }
-
             nav ul.show {
                 display: flex;
             }
-
-            .mobile-menu-btn {
+            .mobile-toggle {
                 display: block;
             }
-
-            .hero h1 {
-                font-size: 2.3rem;
-            }
-
-            .hero-img {
-                height: 340px;
+            .payment-methods {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
     </style>
 </head>
 <body>
 
+    <!-- Promo Top Bar -->
+    <div class="promo-top-bar">
+        🔥 স্পেশাল অফার: কুপন কোড <span>PARADISE50</span> ব্যবহারে পাচ্ছেন ৳৫০ ফ্ল্যাট ডিসকাউন্ট!
+    </div>
+
     <!-- Header / Navbar -->
     <header>
-        <a href="#" class="logo">
-            <i class="fa-solid fa-utensils"></i> Food Paradise
+        <!-- Unique Restaurant Logo -->
+        <a href="#" class="brand-logo">
+            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="50" cy="50" r="48" fill="#8B0000" stroke="#D4AF37" stroke-width="3"/>
+                <path d="M50 20C40 20 32 28 32 38H68C68 28 60 20 50 20Z" fill="#D4AF37"/>
+                <rect x="28" y="42" width="44" height="6" rx="3" fill="#FFFFFF"/>
+                <rect x="30" y="52" width="40" height="5" rx="2.5" fill="#EADFD7"/>
+                <path d="M32 61C32 70 40 76 50 76C60 76 68 70 68 61H32Z" fill="#D4AF37"/>
+                <circle cx="43" cy="28" r="2" fill="#8B0000"/>
+                <circle cx="50" cy="26" r="2" fill="#8B0000"/>
+                <circle cx="57" cy="28" r="2" fill="#8B0000"/>
+            </svg>
+            <div class="brand-text">
+                <h1>Food Paradise</h1>
+                <span>Taste The Happiness</span>
+            </div>
         </a>
+
         <nav>
             <ul id="navMenu">
-                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#offers">Special Offers</a></li>
                 <li><a href="#menu">Menu</a></li>
-                <li><a href="#about">About</a></li>
+                <li><a href="#track">Track Order</a></li>
+                <li><a href="#reviews">Reviews</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
+
         <div class="nav-actions">
-            <div class="cart-icon" onclick="viewCart()">
+            <!-- Admin Icon -->
+            <button class="action-circle-btn" onclick="openAdminModal()" title="Admin Login">
+                <i class="fa-solid fa-user-shield"></i>
+            </button>
+            <!-- Cart Icon -->
+            <button class="action-circle-btn" onclick="openCartModal()" title="Shopping Cart">
                 <i class="fa-solid fa-basket-shopping"></i>
-                <div class="cart-badge" id="cartCount">0</div>
-            </div>
-            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <div class="badge" id="cartBadgeCount">0</div>
+            </button>
+            <button class="mobile-toggle" onclick="toggleNav()">
                 <i class="fa-solid fa-bars"></i>
             </button>
         </div>
     </header>
 
+    <!-- Floating WhatsApp Order -->
+    <a href="https://wa.me/8801712345678?text=Hello%20Food%20Paradise,%20ami%20order%20korte%20chai" target="_blank" class="wa-float" title="Direct WhatsApp Order">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
     <!-- Hero Section -->
     <section class="hero" id="home">
-        <div class="hero-content">
-            <div class="hero-tag">Best Quality & Taste Guaranteed</div>
+        <div>
+            <span class="hero-tag">Best Quality & Taste Guaranteed</span>
             <h1>Taste the Happiness – <span>Fresh Food, Fresh Mood! 🍔</span></h1>
-            <p>আমাদের প্রিমিয়াম কিচেনে তৈরি হয় খাঁটি ও সুস্বাদু খাবার। প্রতিটি কামড়ে অনুভব করুন তাজা উপকরণের নিখুঁত মেলবন্ধন।</p>
-            <div class="hero-buttons">
-                <a href="#menu" class="btn-red"><i class="fa-solid fa-bowl-food"></i> অর্ডার করুন</a>
-                <a href="#contact" class="btn-outline">টেবিল বুক করুন</a>
+            <p>আমাদের প্রিমিয়াম কিচেনে তৈরি হয় খাঁটি ও সুস্বাদু খাবার। দ্রুত ডেলিভারি, সহজ অনলাইন পেমেন্ট এবং সেরা ডাইনিংয়ের অভিজ্ঞতা নিন।</p>
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                <a href="#menu" class="btn-red"><i class="fa-solid fa-utensils"></i> মেন্যু দেখুন</a>
+                <a href="#track" class="btn-gold"><i class="fa-solid fa-location-crosshairs"></i> অর্ডার ট্র্যাক করুন</a>
             </div>
         </div>
-        <div class="hero-image-wrapper">
-            <div class="hero-circle-bg"></div>
-            <img class="hero-img" src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=800&q=80" alt="Delicious Burger and Meals">
-            <div class="badge-floating">
-                <i class="fa-solid fa-star"></i>
+        <div style="display:flex; justify-content:center;">
+            <img class="hero-img" src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=800&q=80" alt="Delicious Burger">
+        </div>
+    </section>
+
+    <!-- Special Offers Section -->
+    <section id="offers">
+        <div class="section-header">
+            <span>Promotions & Deals</span>
+            <h2>আজকের স্পেশাল অফারসমূহ</h2>
+        </div>
+        <div class="offers-banner-grid">
+            <div class="offer-card">
                 <div>
-                    <h4 style="font-size:0.95rem;">৪.৯ রেটিং</h4>
-                    <p style="font-size:0.8rem; color:var(--text-muted);">১,০০০+ হ্যাপি কাস্টমার</p>
+                    <h3>সুপার কম্বো বার্গার</h3>
+                    <p>২টি বিফ বার্গার + ফ্রেঞ্চ ফ্রাই + ২ কোক</p>
+                    <span class="offer-code">৳ ৫৯৯ (Save 25%)</span>
                 </div>
+                <button class="btn-gold" onclick="addCustomCombo('সুপার কম্বো বার্গার', 599)">Add Combo</button>
+            </div>
+            <div class="offer-card" style="background: linear-gradient(135deg, #181111 0%, #4a0000 100%);">
+                <div>
+                    <h3>ফ্যামিলি পিৎজা ফেস্ট</h3>
+                    <p>১২ ইঞ্চি চিজি পিৎজা + স্পাইসি উইংস</p>
+                    <span class="offer-code">৳ ৮৯৯ (Save 20%)</span>
+                </div>
+                <button class="btn-gold" onclick="addCustomCombo('ফ্যামিলি পিৎজা ফেস্ট', 899)">Add Combo</button>
             </div>
         </div>
     </section>
 
-    <!-- Menu Section -->
+    <!-- Menu, Search & Filter -->
     <section id="menu">
         <div class="section-header">
-            <span>Our Delicious Offerings</span>
-            <h2>জনপ্রিয় স্পেশাল মেন্যু</h2>
+            <span>Our Menu</span>
+            <h2>মনপছন্দ খাবার বেছে নিন</h2>
         </div>
 
-        <div class="menu-grid">
-            <!-- Card 1 -->
-            <div class="menu-card">
-                <div class="menu-img-container">
-                    <img class="menu-img" src="https://images.unsplash.com/photo-1586190848861-99aa4a171e90?auto=format&fit=crop&w=600&q=80" alt="Burger">
-                    <span class="menu-price">৳ ৩৫০</span>
-                </div>
-                <div class="menu-details">
-                    <h3>গ্রিল্ড বিফ বার্গার</h3>
-                    <p>রসালো বিফ প্যাটি, চিজ ও বিশেষ সিক্রেট সসের মনমাতানো কম্বিনেশন।</p>
-                    <div class="menu-footer">
-                        <div class="rating"><i class="fa-solid fa-star"></i> 4.9 (120+)</div>
-                        <button class="btn-add-cart" onclick="addToCart('গ্রিল্ড বিফ বার্গার', 350)"><i class="fa-solid fa-plus"></i> কার্ট</button>
-                    </div>
-                </div>
+        <div class="menu-controls">
+            <div class="search-box">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="searchInput" placeholder="খাবারের নাম দিয়ে খুঁজুন..." oninput="filterFoodItems()">
             </div>
+            <div class="category-tabs">
+                <button class="cat-btn active" onclick="setCategory('All', this)">All</button>
+                <button class="cat-btn" onclick="setCategory('Burger', this)">Burger</button>
+                <button class="cat-btn" onclick="setCategory('Pizza', this)">Pizza</button>
+                <button class="cat-btn" onclick="setCategory('Chicken', this)">Chicken</button>
+                <button class="cat-btn" onclick="setCategory('Drinks', this)">Drinks</button>
+                <button class="cat-btn" onclick="setCategory('Dessert', this)">Dessert</button>
+            </div>
+        </div>
 
-            <!-- Card 2 -->
-            <div class="menu-card">
-                <div class="menu-img-container">
-                    <img class="menu-img" src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600&q=80" alt="Pizza">
-                    <span class="menu-price">৳ ৭৫০</span>
-                </div>
-                <div class="menu-details">
-                    <h3>চিজি পেপারনি পিৎজা</h3>
-                    <p>ইতালিয়ান স্টাইল ক্রাস্ট, প্রিমিয়াম মোজারেলা এবং ক্রিস্পি পেপারনি টপিংস।</p>
-                    <div class="menu-footer">
-                        <div class="rating"><i class="fa-solid fa-star"></i> 5.0 (210+)</div>
-                        <button class="btn-add-cart" onclick="addToCart('চিজি পেপারনি পিৎজা', 750)"><i class="fa-solid fa-plus"></i> কার্ট</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Card 3 -->
-            <div class="menu-card">
-                <div class="menu-img-container">
-                    <img class="menu-img" src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=600&q=80" alt="BBQ Platter">
-                    <span class="menu-price">৳ ৮৫০</span>
-                </div>
-                <div class="menu-details">
-                    <h3>স্মোকি বিবিকিউ প্ল্যাটটার</h3>
-                    <p>কাঠকয়লায় পোড়ানো চিকেন ও বিফ রোস্টের সাথে পরোটা ও স্পেশাল সালাদ।</p>
-                    <div class="menu-footer">
-                        <div class="rating"><i class="fa-solid fa-star"></i> 4.8 (85+)</div>
-                        <button class="btn-add-cart" onclick="addToCart('স্মোকি বিবিকিউ প্ল্যাটটার', 850)"><i class="fa-solid fa-plus"></i> কার্ট</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Card 4 -->
-            <div class="menu-card">
-                <div class="menu-img-container">
-                    <img class="menu-img" src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=600&q=80" alt="Dessert">
-                    <span class="menu-price">৳ ২৫০</span>
-                </div>
-                <div class="menu-details">
-                    <h3>চকলেট লাভা কেক</h3>
-                    <p>গরম মেল্টেড চকলেটে ভরা কেকের সাথে প্রিমিয়াম ভ্যানিলা আইসক্রিম।</p>
-                    <div class="menu-footer">
-                        <div class="rating"><i class="fa-solid fa-star"></i> 4.9 (140+)</div>
-                        <button class="btn-add-cart" onclick="addToCart('চকলেট লাভা কেক', 250)"><i class="fa-solid fa-plus"></i> কার্ট</button>
-                    </div>
-                </div>
-            </div>
+        <div class="food-grid" id="foodGrid">
+            <!-- Dynamically populated from JavaScript -->
         </div>
     </section>
 
-    <!-- About Section -->
-    <section class="about" id="about">
-        <div class="about-container">
-            <div class="about-images">
-                <img src="https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?auto=format&fit=crop&w=500&q=80" alt="Restaurant Interior">
-                <img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?auto=format&fit=crop&w=500&q=80" alt="Chef Preparing Food" style="margin-top: 2rem;">
-            </div>
-            <div class="about-content">
-                <div class="hero-tag">আমাদের গল্প</div>
-                <h2>সেরা রেসিপি ও খাঁটি ভালোবাসায় প্রস্তুত খাবার</h2>
-                <p><strong>Food Paradise</strong> শুধুমাত্র একটি রেস্তোরাঁ নয়, এটি খাদ্যপ্রেমীদের আনন্দের আশ্রয়স্থল। আমরা প্রতিটি খাবারে ব্যবহার করি শতভাগ খাঁটি ও ফ্রেশ উপাদান। আমাদের এক্সপার্ট শেফদের হাতের জাদুতে সাধারণ খাবারও হয়ে ওঠে অনন্য এক অভিজ্ঞতা।</p>
-                <ul class="features-list">
-                    <li><i class="fa-solid fa-circle-check"></i> ১০০% হালাল ও হাইজিনিক কিচেন</li>
-                    <li><i class="fa-solid fa-circle-check"></i> প্রিমিয়াম কোয়ালিটি ও অথেন্টিক মসলা</li>
-                    <li><i class="fa-solid fa-circle-check"></i> দ্রুত হোম ডেলিভারি ও আরামদায়ক পরিবেশ</li>
-                </ul>
-                <a href="#menu" class="btn-red">আমাদের মেন্যু দেখুন</a>
-            </div>
+    <!-- Order Tracking Section -->
+    <section class="track-section" id="track">
+        <div class="section-header" style="margin-bottom: 1rem;">
+            <span>Live Tracking</span>
+            <h2>আপনার অর্ডার ট্র্যাক করুন</h2>
+            <p style="color: var(--text-muted); font-size: 0.95rem;">অর্ডার করার পর প্রাপ্ত অর্ডার আইডি (যেমন: FP-1001) দিয়ে স্ট্যাটাস জানুন।</p>
+        </div>
+        <div class="track-input-group">
+            <input type="text" id="trackOrderIdInput" placeholder="অর্ডার আইডি দিন (ex: FP-1001)">
+            <button class="btn-red" onclick="trackOrder()"><i class="fa-solid fa-search"></i> ট্র্যাক</button>
+        </div>
+        <div id="trackResultContainer" style="display:none; max-width: 500px; margin: 1.5rem auto; padding: 1.5rem; background: var(--secondary-cream); border-radius: 16px; border: 1px dashed var(--primary-red);">
+            <!-- Tracking result injects here -->
         </div>
     </section>
 
-    <!-- Contact & Reservation Section -->
+    <!-- Customer Reviews Section -->
+    <section class="reviews-section" id="reviews">
+        <div class="section-header">
+            <span>Feedback</span>
+            <h2>কাস্টমার রিভিউ এবং রেটিং</h2>
+        </div>
+        <div class="review-box-grid" id="reviewGrid">
+            <!-- Reviews populated via JS -->
+        </div>
+        <!-- Add Review Form -->
+        <div style="max-width: 600px; margin: 2rem auto; background: #fff; padding: 2rem; border-radius: 20px; box-shadow: var(--shadow-soft);">
+            <h4 style="margin-bottom: 1rem;">আপনার মূল্যবান মতামত দিন</h4>
+            <form onsubmit="submitReview(event)">
+                <input type="text" id="reviewerName" placeholder="আপনার নাম" required style="width: 100%; padding: 10px 14px; margin-bottom: 10px; border-radius: 10px; border: 1px solid #ddd;">
+                <select id="reviewRating" style="width: 100%; padding: 10px 14px; margin-bottom: 10px; border-radius: 10px; border: 1px solid #ddd;">
+                    <option value="5">⭐⭐⭐⭐⭐ (৫ স্টার)</option>
+                    <option value="4">⭐⭐⭐⭐ (৪ স্টার)</option>
+                    <option value="3">⭐⭐⭐ (৩ স্টার)</option>
+                </select>
+                <textarea id="reviewerComment" rows="3" placeholder="খাবারের স্বাদ ও সার্ভিস কেমন লাগলো?" required style="width: 100%; padding: 10px 14px; margin-bottom: 10px; border-radius: 10px; border: 1px solid #ddd;"></textarea>
+                <button type="submit" class="btn-red" style="width: 100%; justify-content: center;">রিভিউ জমা দিন</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Contact & Location Map -->
     <section id="contact">
         <div class="section-header">
-            <span>Get in Touch</span>
-            <h2>টেবিল বুক বা যোগাযোগ করুন</h2>
+            <span>Visit Us</span>
+            <h2>যোগাযোগ ও রেস্তোরাঁ লোকেশন</h2>
         </div>
-
-        <div class="contact-container">
-            <div class="contact-info">
-                <h3>আমরা আপনার সেবায় প্রস্তুত</h3>
-                <p>পরিবার বা বন্ধুদের নিয়ে একটি সুন্দর সন্ধ্যা কাটাতে আজই আপনার পছন্দের টেবিল রিজার্ভ করুন।</p>
+        <div class="contact-grid">
+            <div class="contact-box">
+                <h3 style="font-family:'Playfair Display',serif; font-size: 1.8rem; margin-bottom: 1rem;">সরাসরি চলে আসুন</h3>
+                <p style="color: var(--text-muted); margin-bottom: 1.5rem;">সেরা ডাইনিং এক্সপেরিয়েন্সের জন্য ফ্যামিলি বা বন্ধুদের নিয়ে ভিজিট করুন।</p>
                 
-                <div class="contact-item">
-                    <i class="fa-solid fa-location-dot"></i>
-                    <div>
-                        <strong>ঠিকানা:</strong>
-                        <p>ধানমন্ডি, ঢাকা, বাংলাদেশ</p>
-                    </div>
+                <div style="margin-bottom: 1rem; display: flex; gap: 12px; align-items: center;">
+                    <i class="fa-solid fa-location-dot" style="color: var(--primary-red); font-size: 1.2rem;"></i>
+                    <span>বাড়ি #১২, রোড #০৫, ধানমন্ডি, ঢাকা - ১২০৫</span>
                 </div>
-
-                <div class="contact-item">
-                    <i class="fa-solid fa-phone"></i>
-                    <div>
-                        <strong>ফোন নম্বর:</strong>
-                        <p>+৮৮০ ১৭১২-৩৪৫৬৭৮</p>
-                    </div>
+                <div style="margin-bottom: 1rem; display: flex; gap: 12px; align-items: center;">
+                    <i class="fa-solid fa-phone" style="color: var(--primary-red); font-size: 1.2rem;"></i>
+                    <span>+৮৮০ ১৭১২-৩৪৫৬৭৮</span>
                 </div>
-
-                <div class="contact-item">
-                    <i class="fa-solid fa-envelope"></i>
-                    <div>
-                        <strong>ইমেইল:</strong>
-                        <p>info@foodparadise.com</p>
-                    </div>
+                <div style="margin-bottom: 1.5rem; display: flex; gap: 12px; align-items: center;">
+                    <i class="fa-brands fa-whatsapp" style="color: #25d366; font-size: 1.4rem;"></i>
+                    <span>হোয়াটসঅ্যাপ: +৮৮০ ১৭১২-৩৪৫৬৭৮</span>
                 </div>
+                <a href="https://wa.me/8801712345678" target="_blank" class="btn-red" style="background:#25d366;"><i class="fa-brands fa-whatsapp"></i> চ্যাট করুন</a>
             </div>
-
-            <div class="contact-form">
-                <form id="bookingForm" onsubmit="handleFormSubmit(event)">
-                    <div class="form-group">
-                        <label>আপনার নাম</label>
-                        <input type="text" placeholder="পুরো নাম লিখুন" required>
-                    </div>
-                    <div class="form-group">
-                        <label>মোবাইল নম্বর</label>
-                        <input type="tel" placeholder="০১৭xxxxxxxx" required>
-                    </div>
-                    <div class="form-group">
-                        <label>অতিথির সংখ্যা / বিস্তারিত</label>
-                        <textarea rows="3" placeholder="কতজনের টেবিল চান এবং কোনো বিশেষ চাওয়া আছে কি?"></textarea>
-                    </div>
-                    <button type="submit" class="btn-red" style="width: 100%; justify-content: center;">বুকিং কনফার্ম করুন</button>
-                </form>
+            <div>
+                <!-- Google Maps Embed -->
+                <iframe class="map-frame" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14608.03914782068!2d90.36542150346338!3d23.747030438180295!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b8b33cffc3fb%3A0x4a826f475fd312af!2sDhanmondi%2C%20Dhaka!5e0!3m2!1sen!2sbd!4v1700000000000!5m2!1sen!2sbd" allowfullscreen="" loading="lazy"></iframe>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <div class="footer-content">
-            <div class="footer-col">
-                <a href="#" class="logo" style="color: var(--secondary-white); margin-bottom: 1rem;">
-                    <i class="fa-solid fa-utensils"></i> Food Paradise
-                </a>
-                <p>Taste the Happiness – Fresh Food, Fresh Mood! সেরা স্বাদের খাবার পরিবেশন করাই আমাদের প্রতিশ্রুতি।</p>
-                <div class="social-links">
-                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
-                </div>
+        <div class="footer-grid">
+            <div>
+                <h3 style="font-family:'Playfair Display',serif; color: #fff; margin-bottom: 1rem;">Food Paradise</h3>
+                <p style="color:#aaa; font-size: 0.9rem;">Taste the Happiness – Fresh Food, Fresh Mood! প্রিমিয়াম স্বাদের শতভাগ স্বাস্থ্যকর খাবার।</p>
             </div>
-
-            <div class="footer-col">
+            <div>
                 <h4>কুইক লিংক</h4>
-                <ul class="footer-links">
-                    <li><a href="#home">হোম</a></li>
-                    <li><a href="#menu">আমাদের মেন্যু</a></li>
-                    <li><a href="#about">আমাদের সম্পর্কে</a></li>
-                    <li><a href="#contact">টেবিল বুকিং</a></li>
-                </ul>
+                <p><a href="#menu" style="color:#aaa; text-decoration:none;">মেন্যু</a></p>
+                <p><a href="#track" style="color:#aaa; text-decoration:none;">অর্ডার ট্র্যাকিং</a></p>
+                <p><a href="#offers" style="color:#aaa; text-decoration:none;">অফার</a></p>
             </div>
-
-            <div class="footer-col">
-                <h4>খোলার সময়সূচী</h4>
-                <p>শনিবার - বৃহস্পতিবার:<br> সকাল ১১:০০ - রাত ১১:০০</p>
-                <p>শুক্রবার:<br> দুপুর ২:০০ - রাত ১১:৩০</p>
+            <div>
+                <h4>পেমেন্ট পার্টনার</h4>
+                <p style="color:#aaa; font-size: 0.9rem;">bKash | Nagad | Rocket | Visa / Master Card | Cash On Delivery</p>
             </div>
         </div>
-
         <div class="footer-bottom">
-            <p>&copy; ২০২৬ Food Paradise. সর্বস্বত্ব সংরক্ষিত।</p>
+            &copy; 2026 Food Paradise. All Rights Reserved.
         </div>
     </footer>
 
-    <!-- JavaScript -->
-    <script>
-        // Cart State
-        let cartItems = [];
-        const cartCountEl = document.getElementById('cartCount');
+    <!-- ================= MODALS ================= -->
 
-        function addToCart(itemName, price) {
-            cartItems.push({ name: itemName, price: price });
-            cartCountEl.innerText = cartItems.length;
+    <!-- CART & CHECKOUT MODAL -->
+    <div class="modal" id="cartModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('cartModal')">&times;</button>
+            <h3 style="font-family:'Playfair Display',serif; margin-bottom: 1.2rem;"><i class="fa-solid fa-basket-shopping"></i> আপনার কার্ট</h3>
             
-            // Animation Feedback
-            cartCountEl.style.transform = 'scale(1.3)';
-            setTimeout(() => {
-                cartCountEl.style.transform = 'scale(1)';
-            }, 200);
+            <div id="cartItemsList">
+                <!-- Cart items list dynamically -->
+            </div>
 
-            alert(`${itemName} কার্টে যোগ করা হয়েছে! 🛒`);
+            <div style="border-top: 2px solid #eee; padding-top: 1rem; margin-top: 1rem;">
+                <div style="display: flex; justify-content: space-between; font-weight: 700; font-size: 1.2rem; margin-bottom: 1rem;">
+                    <span>সর্বমোট:</span>
+                    <span id="cartTotalPrice">৳ ০</span>
+                </div>
+
+                <h4 style="margin-bottom: 0.5rem;">ডেলিভারি তথ্য দিন:</h4>
+                <input type="text" id="custName" placeholder="আপনার নাম *" required style="width: 100%; padding: 10px; margin-bottom: 8px; border-radius: 8px; border: 1px solid #ddd;">
+                <input type="tel" id="custPhone" placeholder="মোবাইল নম্বর *" required style="width: 100%; padding: 10px; margin-bottom: 8px; border-radius: 8px; border: 1px solid #ddd;">
+                <textarea id="custAddress" rows="2" placeholder="ডেলিভারি ঠিকানা *" required style="width: 100%; padding: 10px; margin-bottom: 8px; border-radius: 8px; border: 1px solid #ddd;"></textarea>
+
+                <h4 style="margin-bottom: 0.5rem;">পেমেন্ট মেথড বেছে নিন:</h4>
+                <div class="payment-methods">
+                    <div class="pay-option selected" onclick="selectPayment('Cash on Delivery', this)">Cash On Delivery</div>
+                    <div class="pay-option" onclick="selectPayment('bKash', this)">bKash</div>
+                    <div class="pay-option" onclick="selectPayment('Nagad', this)">Nagad</div>
+                    <div class="pay-option" onclick="selectPayment('Card', this)">Card</div>
+                </div>
+
+                <!-- Payment Details Section if Online Pay is selected -->
+                <div id="onlinePayDetails" style="display: none; background: #fff3cd; padding: 10px; border-radius: 8px; margin-bottom: 1rem; font-size: 0.85rem;">
+                    <p id="payInstructionText">বিকাশ মার্চেন্ট নম্বর: <strong>01712345678</strong> (Make Payment)</p>
+                    <input type="text" id="payTrxId" placeholder="Transaction ID (TrxID) দিন" style="width: 100%; padding: 8px; margin-top: 6px; border-radius: 6px; border: 1px solid #ccc;">
+                </div>
+
+                <div style="display: flex; gap: 10px; margin-top: 1rem;">
+                    <button class="btn-red" style="flex: 1; justify-content: center;" onclick="placeOrder('website')">অর্ডার কনফার্ম করুন</button>
+                    <button class="btn-red" style="flex: 1; justify-content: center; background: #25d366;" onclick="placeOrder('whatsapp')"><i class="fa-brands fa-whatsapp"></i> WhatsApp Order</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ADMIN LOGIN & DASHBOARD MODAL -->
+    <div class="modal" id="adminModal">
+        <div class="modal-content admin-modal">
+            <button class="modal-close" onclick="closeModal('adminModal')">&times;</button>
+            
+            <!-- Login State -->
+            <div id="adminLoginForm">
+                <h3 style="font-family:'Playfair Display',serif; margin-bottom: 1rem;"><i class="fa-solid fa-lock"></i> অ্যাডমিন লগইন</h3>
+                <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:1rem;">(Default User: <strong>admin</strong> | Password: <strong>1234</strong>)</p>
+                <input type="text" id="adminUser" placeholder="Username" style="width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 8px; border: 1px solid #ddd;">
+                <input type="password" id="adminPass" placeholder="Password" style="width: 100%; padding: 10px; margin-bottom: 1rem; border-radius: 8px; border: 1px solid #ddd;">
+                <button class="btn-red" style="width: 100%; justify-content: center;" onclick="adminLogin()">লগইন করুন</button>
+            </div>
+
+            <!-- Dashboard State -->
+            <div id="adminDashboard" style="display: none;">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+                    <h3><i class="fa-solid fa-chart-line"></i> Food Paradise Dashboard</h3>
+                    <button class="btn-red" style="padding: 4px 12px; font-size:0.8rem;" onclick="adminLogout()">লগআউট</button>
+                </div>
+
+                <div class="admin-nav-tabs">
+                    <button class="admin-tab-btn active" onclick="switchAdminTab('orders', this)">অর্ডার লিস্ট</button>
+                    <button class="admin-tab-btn" onclick="switchAdminTab('foods', this)">খাবার ম্যানেজমেন্ট</button>
+                </div>
+
+                <!-- Tab 1: Orders -->
+                <div id="adminTabOrders">
+                    <h4>গ্রাহকদের অর্ডার তালিকা</h4>
+                    <div style="overflow-x:auto;">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>Order ID</th>
+                                    <th>Customer</th>
+                                    <th>Items</th>
+                                    <th>Total</th>
+                                    <th>Payment</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="adminOrderTableBody">
+                                <!-- Orders populated here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Tab 2: Foods -->
+                <div id="adminTabFoods" style="display: none;">
+                    <h4>নতুন খাবার যুক্ত করুন</h4>
+                    <form onsubmit="adminSaveFood(event)" style="display:grid; grid-template-columns: 1fr 1fr; gap:10px; margin-bottom: 1.5rem; background:#f9f9f9; padding:1rem; border-radius:12px;">
+                        <input type="hidden" id="foodEditId">
+                        <input type="text" id="newFoodName" placeholder="খাবারের নাম *" required style="padding:8px; border-radius:6px; border:1px solid #ddd;">
+                        <input type="number" id="newFoodPrice" placeholder="মূল্য (৳) *" required style="padding:8px; border-radius:6px; border:1px solid #ddd;">
+                        <select id="newFoodCat" style="padding:8px; border-radius:6px; border:1px solid #ddd;">
+                            <option value="Burger">Burger</option>
+                            <option value="Pizza">Pizza</option>
+                            <option value="Chicken">Chicken</option>
+                            <option value="Drinks">Drinks</option>
+                            <option value="Dessert">Dessert</option>
+                        </select>
+                        <input type="text" id="newFoodImg" placeholder="ছবির অনলাইন লিংক (URL) *" required style="padding:8px; border-radius:6px; border:1px solid #ddd;">
+                        <textarea id="newFoodDesc" placeholder="খাবারের বর্ণনা" style="grid-column: span 2; padding:8px; border-radius:6px; border:1px solid #ddd;"></textarea>
+                        <button type="submit" class="btn-red" style="grid-column: span 2; justify-content:center;">সেভ করুন</button>
+                    </form>
+
+                    <h4>বর্তমান ফুড আইটেম তালিকা</h4>
+                    <div style="overflow-x:auto;">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>Image</th>
+                                    <th>Name</th>
+                                    <th>Category</th>
+                                    <th>Price</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="adminFoodTableBody">
+                                <!-- Food list here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ================= JAVASCRIPT ================= -->
+    <script>
+        // Initial Default Data
+        const defaultFoods = [
+            { id: 1, name: "স্মোকি বিবিকিউ বার্গার", category: "Burger", price: 320, desc: "বিফ প্যাটি, ক্রিস্পি বেকন ও হোমমেড বারবিকিউ সস।", img: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=500" },
+            { id: 2, name: "চিজি পেপারনি পিৎজা", category: "Pizza", price: 650, desc: "ইতালিয়ান ক্রাস্ট, মোজারেলা চিজ ও স্পাইসি পেপারনি।", img: "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=500" },
+            { id: 3, name: "ক্রিস্পি ফ্রাইড চিকেন (৪ পিস)", category: "Chicken", price: 380, desc: "বাইরে ক্রিস্পি ভেতরে রসালো স্পেশাল ফ্রাইড চিকেন।", img: "https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?w=500" },
+            { id: 4, name: "চকলেট লাভা কেক", category: "Dessert", price: 220, desc: "গরম মেল্টেড চকলেট ও প্রিমিয়াম ভ্যানিলা আইসক্রিম।", img: "https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=500" },
+            { id: 5, name: "ব্লু ওশান মকটেল", category: "Drinks", price: 180, desc: "তাজা পুদিনা, লেবু ও ব্লু কুরাসাও ব্লেন্ড।", img: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=500" },
+            { id: 6, name: "মাশরুম চিজ বার্গার", category: "Burger", price: 360, desc: "বাটার সতে করা মাশরুম এবং এক্সট্রা গলানো চিজ।", img: "https://images.unsplash.com/photo-1586190848861-99aa4a171e90?w=500" }
+        ];
+
+        const defaultReviews = [
+            { name: "আরিফুল ইসলাম", rating: 5, text: "বার্গারের টেস্ট অসাধারণ ছিল! ধানমন্ডিতে সেরা ফুড এক্সপেরিয়েন্স।" },
+            { name: "তানজিলা আক্তার", rating: 5, text: "খুব দ্রুত ডেলিভারি পেয়েছি। পিৎজার চিজ পুল ছিল দেখার মতো!" }
+        ];
+
+        // LocalStorage Initialization
+        let foods = JSON.parse(localStorage.getItem('fp_foods')) || defaultFoods;
+        let orders = JSON.parse(localStorage.getItem('fp_orders')) || [
+            { id: "FP-1001", customer: "রাকিব হাসান", phone: "01811111111", address: "মিরপুর ১০, ঢাকা", items: "স্মোকি বিবিকিউ বার্গার x 2", total: 640, payment: "bKash (Trx: TRX89745)", status: "Delivered" }
+        ];
+        let reviews = JSON.parse(localStorage.getItem('fp_reviews')) || defaultReviews;
+        let cart = [];
+        let selectedCategory = 'All';
+        let selectedPaymentMethod = 'Cash on Delivery';
+
+        // Render Functions
+        function renderFoodItems() {
+            const grid = document.getElementById('foodGrid');
+            const searchVal = document.getElementById('searchInput').value.toLowerCase();
+            
+            const filtered = foods.filter(item => {
+                const matchCat = (selectedCategory === 'All') || (item.category === selectedCategory);
+                const matchSearch = item.name.toLowerCase().includes(searchVal) || item.desc.toLowerCase().includes(searchVal);
+                return matchCat && matchSearch;
+            });
+
+            grid.innerHTML = filtered.map(item => `
+                <div class="food-card">
+                    <div class="food-thumb">
+                        <img src="${item.img}" alt="${item.name}">
+                        <span class="food-cat-badge">${item.category}</span>
+                    </div>
+                    <div class="food-content">
+                        <h4 class="food-title">${item.name}</h4>
+                        <p class="food-desc">${item.desc}</p>
+                        <div class="food-price-row">
+                            <span class="food-price">৳ ${item.price}</span>
+                            <button class="btn-red" style="padding: 7px 14px; font-size: 0.85rem;" onclick="addToCart(${item.id})">
+                                <i class="fa-solid fa-plus"></i> কার্টে নিন
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
         }
 
-        function viewCart() {
-            if (cartItems.length === 0) {
-                alert("আপনার কার্ট খালি! মেন্যু থেকে কিছু খাবার পছন্দ করুন।");
+        function setCategory(cat, btn) {
+            selectedCategory = cat;
+            document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            renderFoodItems();
+        }
+
+        function filterFoodItems() {
+            renderFoodItems();
+        }
+
+        // Cart Management
+        function addToCart(foodId) {
+            const food = foods.find(f => f.id === foodId);
+            const cartItem = cart.find(c => c.id === foodId);
+            if (cartItem) {
+                cartItem.qty += 1;
+            } else {
+                cart.push({ ...food, qty: 1 });
+            }
+            updateCartUI();
+        }
+
+        function addCustomCombo(name, price) {
+            cart.push({ id: Date.now(), name: name, price: price, qty: 1, desc: 'Combo Pack' });
+            updateCartUI();
+            openCartModal();
+        }
+
+        function changeQty(id, delta) {
+            const item = cart.find(c => c.id === id);
+            if (!item) return;
+            item.qty += delta;
+            if (item.qty <= 0) {
+                cart = cart.filter(c => c.id !== id);
+            }
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const badge = document.getElementById('cartBadgeCount');
+            const totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
+            badge.innerText = totalQty;
+
+            const listContainer = document.getElementById('cartItemsList');
+            if (cart.length === 0) {
+                listContainer.innerHTML = `<p style="text-align:center; color:var(--text-muted); padding:2rem 0;">আপনার কার্ট বর্তমানে খালি আছে!</p>`;
+                document.getElementById('cartTotalPrice').innerText = `৳ ০`;
                 return;
             }
-            let total = cartItems.reduce((sum, item) => sum + item.price, 0);
-            let itemsList = cartItems.map((item, index) => `${index + 1}. ${item.name} - ৳${item.price}`).join('\n');
-            alert(`🛒 আপনার কার্টের আইটেমসমূহ:\n\n${itemsList}\n\nমোট খরচ: ৳${total}`);
+
+            let total = 0;
+            listContainer.innerHTML = cart.map(item => {
+                const subTotal = item.price * item.qty;
+                total += subTotal;
+                return `
+                    <div class="cart-item-row">
+                        <div>
+                            <strong>${item.name}</strong><br>
+                            <small style="color:var(--text-muted);">৳ ${item.price} x ${item.qty} = ৳ ${subTotal}</small>
+                        </div>
+                        <div class="qty-controls">
+                            <button class="qty-btn" onclick="changeQty(${item.id}, -1)">-</button>
+                            <span>${item.qty}</span>
+                            <button class="qty-btn" onclick="changeQty(${item.id}, 1)">+</button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            document.getElementById('cartTotalPrice').innerText = `৳ ${total}`;
         }
 
-        function handleFormSubmit(e) {
+        function selectPayment(method, el) {
+            selectedPaymentMethod = method;
+            document.querySelectorAll('.pay-option').forEach(p => p.classList.remove('selected'));
+            el.classList.add('selected');
+
+            const onlineBox = document.getElementById('onlinePayDetails');
+            const instruction = document.getElementById('payInstructionText');
+            
+            if (method === 'bKash') {
+                onlineBox.style.display = 'block';
+                instruction.innerHTML = 'বিকাশ পেমেন্ট নম্বর: <strong>01712345678</strong> (Make Payment)';
+            } else if (method === 'Nagad') {
+                onlineBox.style.display = 'block';
+                instruction.innerHTML = 'নগদ পেমেন্ট নম্বর: <strong>01712345678</strong> (Send Money / Payment)';
+            } else if (method === 'Card') {
+                onlineBox.style.display = 'block';
+                instruction.innerHTML = 'অনলাইন কার্ড গেটওয়ে: কার্ডের শেষ ৪ ডিজিট ও নাম TrxID বক্সে দিন।';
+            } else {
+                onlineBox.style.display = 'none';
+            }
+        }
+
+        // Place Order Logic
+        function placeOrder(type) {
+            if (cart.length === 0) {
+                alert("অনুগ্রহ করে কার্টে খাবার যুক্ত করুন!");
+                return;
+            }
+
+            const name = document.getElementById('custName').value.trim();
+            const phone = document.getElementById('custPhone').value.trim();
+            const address = document.getElementById('custAddress').value.trim();
+            const trxId = document.getElementById('payTrxId').value.trim();
+
+            if (!name || !phone || !address) {
+                alert("দয়া করে নাম, মোবাইল নম্বর এবং ঠিকানা সঠিকভাবে লিখুন।");
+                return;
+            }
+
+            const total = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+            const itemsSummary = cart.map(i => `${i.name} (${i.qty}x)`).join(', ');
+            const orderId = "FP-" + Math.floor(1000 + Math.random() * 9000);
+
+            let paymentString = selectedPaymentMethod;
+            if (selectedPaymentMethod !== 'Cash on Delivery') {
+                if (!trxId) {
+                    alert("অনলাইন পেমেন্টের Transaction ID লিখুন!");
+                    return;
+                }
+                paymentString += ` (Trx: ${trxId})`;
+            }
+
+            const newOrder = {
+                id: orderId,
+                customer: name,
+                phone: phone,
+                address: address,
+                items: itemsSummary,
+                total: total,
+                payment: paymentString,
+                status: "Pending"
+            };
+
+            // Save to localStorage
+            orders.unshift(newOrder);
+            localStorage.setItem('fp_orders', JSON.stringify(orders));
+
+            if (type === 'whatsapp') {
+                const waMessage = `*নতুন অর্ডার - Food Paradise*%0A*Order ID:* ${orderId}%0A*নাম:* ${name}%0A*ফোন:* ${phone}%0A*ঠিকানা:* ${address}%0A*আইটেমসমূহ:* ${itemsSummary}%0A*সর্বমোট:* ৳ ${total}%0A*পেমেন্ট:* ${paymentString}`;
+                window.open(`https://wa.me/8801712345678?text=${waMessage}`, '_blank');
+            } else {
+                alert(`ধন্যবাদ ${name}! আপনার অর্ডার সফল হয়েছে।\nআপনার অর্ডার আইডি: ${orderId}\nদয়া করে আইডিটি সংরক্ষণ করুন।`);
+            }
+
+            // Clear Cart & Form
+            cart = [];
+            updateCartUI();
+            closeModal('cartModal');
+            document.getElementById('custName').value = '';
+            document.getElementById('custPhone').value = '';
+            document.getElementById('custAddress').value = '';
+            document.getElementById('payTrxId').value = '';
+        }
+
+        // Live Order Tracking
+        function trackOrder() {
+            const id = document.getElementById('trackOrderIdInput').value.trim().toUpperCase();
+            const resContainer = document.getElementById('trackResultContainer');
+
+            const order = orders.find(o => o.id === id);
+            if (!order) {
+                resContainer.style.display = 'block';
+                resContainer.innerHTML = `<span style="color:red; font-weight:bold;">অর্ডার পাওয়া যায়নি! সঠিক Order ID দিন।</span>`;
+                return;
+            }
+
+            resContainer.style.display = 'block';
+            resContainer.innerHTML = `
+                <h4 style="color:var(--primary-red);"><i class="fa-solid fa-receipt"></i> Order: ${order.id}</h4>
+                <p><strong>কাস্টমার:</strong> ${order.customer} (${order.phone})</p>
+                <p><strong>আইটেমসমূহ:</strong> ${order.items}</p>
+                <p><strong>সর্বমোট:</strong> ৳ ${order.total} | ${order.payment}</p>
+                <hr style="margin: 10px 0; border:none; border-top: 1px solid #ddd;">
+                <p><strong>বর্তমান স্ট্যাটাস:</strong> <span class="status-badge status-${order.status}">${order.status}</span></p>
+            `;
+        }
+
+        // Reviews System
+        function renderReviews() {
+            const grid = document.getElementById('reviewGrid');
+            grid.innerHTML = reviews.map(r => `
+                <div class="review-card">
+                    <div class="review-stars">${'⭐'.repeat(r.rating)}</div>
+                    <p style="font-style: italic; margin-bottom: 8px;">"${r.text}"</p>
+                    <small><strong>${r.name}</strong> - ভেরিফাইড কাস্টমার</small>
+                </div>
+            `).join('');
+        }
+
+        function submitReview(e) {
             e.preventDefault();
-            alert("ধন্যবাদ! আপনার টেবিল রিজার্ভেশন রিকোয়েস্ট সফলভাবে জমা হয়েছে। আমাদের প্রতিনিধি দ্রুত যোগাযোগ করবেন।");
+            const name = document.getElementById('reviewerName').value;
+            const rating = parseInt(document.getElementById('reviewRating').value);
+            const text = document.getElementById('reviewerComment').value;
+
+            reviews.unshift({ name, rating, text });
+            localStorage.setItem('fp_reviews', JSON.stringify(reviews));
+            renderReviews();
             e.target.reset();
+            alert("আপনার রিভিউর জন্য ধন্যবাদ!");
         }
 
-        // Mobile Nav Toggle
-        const mobileBtn = document.getElementById('mobileMenuBtn');
-        const navMenu = document.getElementById('navMenu');
+        // Admin Functionalities
+        function adminLogin() {
+            const u = document.getElementById('adminUser').value;
+            const p = document.getElementById('adminPass').value;
+            if (u === 'admin' && p === '1234') {
+                document.getElementById('adminLoginForm').style.display = 'none';
+                document.getElementById('adminDashboard').style.display = 'block';
+                loadAdminOrders();
+                loadAdminFoods();
+            } else {
+                alert("ইউজারনেম বা পাসওয়ার্ড ভুল হয়েছে!");
+            }
+        }
 
-        mobileBtn.addEventListener('click', () => {
-            navMenu.classList.toggle('show');
-        });
+        function adminLogout() {
+            document.getElementById('adminLoginForm').style.display = 'block';
+            document.getElementById('adminDashboard').style.display = 'none';
+        }
 
-        // Close mobile nav when clicking a link
-        document.querySelectorAll('#navMenu a').forEach(link => {
-            link.addEventListener('click', () => {
-                navMenu.classList.remove('show');
-            });
-        });
+        function switchAdminTab(tab, btn) {
+            document.querySelectorAll('.admin-tab-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            if (tab === 'orders') {
+                document.getElementById('adminTabOrders').style.display = 'block';
+                document.getElementById('adminTabFoods').style.display = 'none';
+                loadAdminOrders();
+            } else {
+                document.getElementById('adminTabOrders').style.display = 'none';
+                document.getElementById('adminTabFoods').style.display = 'block';
+                loadAdminFoods();
+            }
+        }
+
+        function loadAdminOrders() {
+            const tbody = document.getElementById('adminOrderTableBody');
+            tbody.innerHTML = orders.map((o, idx) => `
+                <tr>
+                    <td><strong>${o.id}</strong></td>
+                    <td>${o.customer}<br><small>${o.phone}</small></td>
+                    <td>${o.items}</td>
+                    <td>৳ ${o.total}</td>
+                    <td><small>${o.payment}</small></td>
+                    <td>
+                        <select onchange="updateOrderStatus('${o.id}', this.value)" style="padding: 4px; border-radius: 6px;">
+                            <option value="Pending" ${o.status === 'Pending' ? 'selected' : ''}>Pending</option>
+                            <option value="Confirmed" ${o.status === 'Confirmed' ? 'selected' : ''}>Confirmed</option>
+                            <option value="Cooking" ${o.status === 'Cooking' ? 'selected' : ''}>Cooking</option>
+                            <option value="Delivered" ${o.status === 'Delivered' ? 'selected' : ''}>Delivered</option>
+                        </select>
+                    </td>
+                    <td>
+                        <button onclick="deleteOrder('${o.id}')" style="color:red; border:none; background:none; cursor:pointer;"><i class="fa-solid fa-trash"></i></button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function updateOrderStatus(id, newStatus) {
+            const o = orders.find(ord => ord.id === id);
+            if (o) {
+                o.status = newStatus;
+                localStorage.setItem('fp_orders', JSON.stringify(orders));
+                alert(`Order ${id} status updated to ${newStatus}`);
+            }
+        }
+
+        function deleteOrder(id) {
+            if (confirm("আপনি কি নিশ্চিত এই অর্ডার ডিলিট করতে চান?")) {
+                orders = orders.filter(o => o.id !== id);
+                localStorage.setItem('fp_orders', JSON.stringify(orders));
+                loadAdminOrders();
+            }
+        }
+
+        function loadAdminFoods() {
+            const tbody = document.getElementById('adminFoodTableBody');
+            tbody.innerHTML = foods.map(f => `
+                <tr>
+                    <td><img src="${f.img}" width="45" height="45" style="border-radius:8px; object-fit:cover;"></td>
+                    <td><strong>${f.name}</strong></td>
+                    <td>${f.category}</td>
+                    <td>৳ ${f.price}</td>
+                    <td>
+                        <button onclick="editFood(${f.id})" style="color:blue; border:none; background:none; cursor:pointer; margin-right:8px;"><i class="fa-solid fa-pen"></i></button>
+                        <button onclick="deleteFood(${f.id})" style="color:red; border:none; background:none; cursor:pointer;"><i class="fa-solid fa-trash"></i></button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function adminSaveFood(e) {
+            e.preventDefault();
+            const id = document.getElementById('foodEditId').value;
+            const name = document.getElementById('newFoodName').value;
+            const price = parseFloat(document.getElementById('newFoodPrice').value);
+            const category = document.getElementById('newFoodCat').value;
+            const img = document.getElementById('newFoodImg').value;
+            const desc = document.getElementById('newFoodDesc').value;
+
+            if (id) {
+                // Update
+                const item = foods.find(f => f.id == id);
+                item.name = name;
+                item.price = price;
+                item.category = category;
+                item.img = img;
+                item.desc = desc;
+            } else {
+                // Add New
+                foods.push({
+                    id: Date.now(),
+                    name,
+                    price,
+                    category,
+                    img,
+                    desc
+                });
+            }
+
+            localStorage.setItem('fp_foods', JSON.stringify(foods));
+            renderFoodItems();
+            loadAdminFoods();
+            e.target.reset();
+            document.getElementById('foodEditId').value = '';
+            alert("খাবার সফলভাবে সেভ হয়েছে!");
+        }
+
+        function editFood(id) {
+            const f = foods.find(food => food.id === id);
+            if (!f) return;
+            document.getElementById('foodEditId').value = f.id;
+            document.getElementById('newFoodName').value = f.name;
+            document.getElementById('newFoodPrice').value = f.price;
+            document.getElementById('newFoodCat').value = f.category;
+            document.getElementById('newFoodImg').value = f.img;
+            document.getElementById('newFoodDesc').value = f.desc;
+        }
+
+        function deleteFood(id) {
+            if (confirm("আপনি কি নিশ্চিত এই খাবারটি তালিকা থেকে বাদ দিতে চান?")) {
+                foods = foods.filter(f => f.id !== id);
+                localStorage.setItem('fp_foods', JSON.stringify(foods));
+                renderFoodItems();
+                loadAdminFoods();
+            }
+        }
+
+        // Modal Helpers
+        function openCartModal() { document.getElementById('cartModal').classList.add('active'); updateCartUI(); }
+        function openAdminModal() { document.getElementById('adminModal').classList.add('active'); }
+        function closeModal(id) { document.getElementById(id).classList.remove('active'); }
+        function toggleNav() { document.getElementById('navMenu').classList.toggle('show'); }
+
+        // Initial Boot
+        renderFoodItems();
+        renderReviews();
+        updateCartUI();
     </script>
 </body>
 </html>
