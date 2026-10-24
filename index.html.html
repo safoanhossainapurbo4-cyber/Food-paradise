@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Paradise | Taste the Happiness</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-red: #8B0000;       /* Dark Red */
+            --primary-hover: #6a0000;
+            --secondary-white: #FFFFFF;    /* White */
+            --bg-cream: #FDFBF7;           /* Premium Light Cream */
+            --bg-card: #FFFFFF;
+            --text-dark: #221A1A;
+            --text-muted: #6B6262;
+            --accent-gold: #D4AF37;
+            --shadow-soft: 0 10px 30px rgba(139, 0, 0, 0.08);
+            --shadow-hover: 0 20px 40px rgba(139, 0, 0, 0.16);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-cream);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- NAVIGATION BAR --- */
+        header {
+            position: sticky;
+            top: 0;
+            background: rgba(253, 251, 247, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+            z-index: 1000;
+            padding: 1rem 5%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--primary-red);
+            text-decoration: none;
+        }
+
+        .logo i {
+            font-size: 1.8rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--primary-red);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+        }
+
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+            font-size: 1.3rem;
+            color: var(--primary-red);
+            background: rgba(139, 0, 0, 0.08);
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .cart-icon:hover {
+            background: var(--primary-red);
+            color: var(--secondary-white);
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: -4px;
+            right: -4px;
+            background: var(--primary-red);
+            color: var(--secondary-white);
+            font-size: 0.75rem;
+            font-weight: bold;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid var(--secondary-white);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            background: none;
+            border: none;
+            color: var(--primary-red);
+            cursor: pointer;
+        }
+
+        /* --- BUTTONS --- */
+        .btn-red {
+            background-color: var(--primary-red);
+            color: var(--secondary-white);
+            padding: 0.85rem 1.8rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(139, 0, 0, 0.25);
+        }
+
+        .btn-red:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(139, 0, 0, 0.35);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--primary-red);
+            border: 2px solid var(--primary-red);
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary-red);
+            color: var(--secondary-white);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            display: grid;
+            grid-template-columns: 1.1fr 1fr;
+            min-height: calc(100vh - 80px);
+            align-items: center;
+            padding: 2rem 5% 4rem;
+            gap: 3rem;
+            position: relative;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            background: rgba(139, 0, 0, 0.1);
+            color: var(--primary-red);
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 1.2rem;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            line-height: 1.18;
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 span {
+            color: var(--primary-red);
+            display: block;
+        }
+
+        .hero p {
+            color: var(--text-muted);
+            font-size: 1.15rem;
+            margin-bottom: 2.2rem;
+            max-width: 520px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-image-wrapper {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-circle-bg {
+            position: absolute;
+            width: 440px;
+            height: 440px;
+            background: radial-gradient(circle, rgba(139, 0, 0, 0.15) 0%, rgba(253, 251, 247, 0) 70%);
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .hero-img {
+            width: 100%;
+            max-width: 520px;
+            height: 480px;
+            object-fit: cover;
+            border-radius: 30px;
+            position: relative;
+            z-index: 2;
+            box-shadow: var(--shadow-hover);
+            transition: var(--transition);
+        }
+
+        .hero-img:hover {
+            transform: scale(1.02);
+        }
+
+        .badge-floating {
+            position: absolute;
+            bottom: 25px;
+            left: 10px;
+            background: var(--secondary-white);
+            padding: 12px 20px;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            z-index: 3;
+        }
+
+        .badge-floating i {
+            font-size: 1.8rem;
+            color: var(--accent-gold);
+        }
+
+        /* --- SECTION COMMONS --- */
+        section {
+            padding: 5rem 5%;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 650px;
+            margin: 0 auto 3.5rem;
+        }
+
+        .section-header span {
+            color: var(--primary-red);
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1.5px;
+        }
+
+        .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.6rem;
+            margin-top: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        /* --- MENU SECTION --- */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .menu-card {
+            background: var(--bg-card);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(139, 0, 0, 0.05);
+        }
+
+        .menu-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .menu-img-container {
+            width: 100%;
+            height: 220px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .menu-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .menu-card:hover .menu-img {
+            transform: scale(1.08);
+        }
+
+        .menu-price {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--primary-red);
+            color: var(--secondary-white);
+            font-weight: 700;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.95rem;
+        }
+
+        .menu-details {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .menu-details h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .menu-details p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 1.2rem;
+            flex-grow: 1;
+        }
+
+        .menu-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .rating {
+            color: var(--accent-gold);
+            font-size: 0.85rem;
+        }
+
+        .btn-add-cart {
+            background: rgba(139, 0, 0, 0.08);
+            color: var(--primary-red);
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .btn-add-cart:hover {
+            background: var(--primary-red);
+            color: var(--secondary-white);
+        }
+
+        /* --- ABOUT SECTION --- */
+        .about {
+            background: rgba(139, 0, 0, 0.02);
+        }
+
+        .about-container {
+            display: grid;
+            grid-template-columns: 1fr 1.1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-images {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .about-images img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 16px;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .about-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.6rem;
+            margin-bottom: 1.2rem;
+            color: var(--text-dark);
+        }
+
+        .about-content p {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+        }
+
+        .features-list {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .features-list li {
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+        }
+
+        .features-list i {
+            color: var(--primary-red);
+        }
+
+        /* --- CONTACT SECTION --- */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 3rem;
+            background: var(--secondary-white);
+            border-radius: 24px;
+            padding: 3.5rem;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .contact-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info p {
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item i {
+            width: 45px;
+            height: 45px;
+            background: rgba(139, 0, 0, 0.08);
+            color: var(--primary-red);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+
+        .contact-form form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .form-group label {
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .form-group input, .form-group textarea {
+            padding: 12px 16px;
+            border-radius: 12px;
+            border: 1px solid #E0DADA;
+            background: var(--bg-cream);
+            outline: none;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            border-color: var(--primary-red);
+            box-shadow: 0 0 0 3px rgba(139, 0, 0, 0.1);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background: #181111;
+            color: var(--secondary-white);
+            padding: 4rem 5% 1.5rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-col h4 {
+            font-size: 1.2rem;
+            margin-bottom: 1.2rem;
+            color: var(--secondary-white);
+            position: relative;
+        }
+
+        .footer-col p {
+            color: #A09696;
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: #A09696;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary-white);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 10px;
+        }
+
+        .social-links a {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.08);
+            color: var(--secondary-white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--primary-red);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            color: #7A7070;
+            font-size: 0.9rem;
+        }
+
+        /* --- MOBILE RESPONSIVE --- */
+        @media (max-width: 992px) {
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding-top: 3rem;
+            }
+
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+
+            .hero p {
+                margin: 0 auto 2rem;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .about-container {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--bg-cream);
+                flex-direction: column;
+                padding: 1.5rem 0;
+                box-shadow: 0 10px 15px rgba(0,0,0,0.05);
+            }
+
+            nav ul.show {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+
+            .hero-img {
+                height: 340px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navbar -->
+    <header>
+        <a href="#" class="logo">
+            <i class="fa-solid fa-utensils"></i> Food Paradise
+        </a>
+        <nav>
+            <ul id="navMenu">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="nav-actions">
+            <div class="cart-icon" onclick="viewCart()">
+                <i class="fa-solid fa-basket-shopping"></i>
+                <div class="cart-badge" id="cartCount">0</div>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="hero-tag">Best Quality & Taste Guaranteed</div>
+            <h1>Taste the Happiness – <span>Fresh Food, Fresh Mood! 🍔</span></h1>
+            <p>আমাদের প্রিমিয়াম কিচেনে তৈরি হয় খাঁটি ও সুস্বাদু খাবার। প্রতিটি কামড়ে অনুভব করুন তাজা উপকরণের নিখুঁত মেলবন্ধন।</p>
+            <div class="hero-buttons">
+                <a href="#menu" class="btn-red"><i class="fa-solid fa-bowl-food"></i> অর্ডার করুন</a>
+                <a href="#contact" class="btn-outline">টেবিল বুক করুন</a>
+            </div>
+        </div>
+        <div class="hero-image-wrapper">
+            <div class="hero-circle-bg"></div>
+            <img class="hero-img" src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=800&q=80" alt="Delicious Burger and Meals">
+            <div class="badge-floating">
+                <i class="fa-solid fa-star"></i>
+                <div>
+                    <h4 style="font-size:0.95rem;">৪.৯ রেটিং</h4>
+                    <p style="font-size:0.8rem; color:var(--text-muted);">১,০০০+ হ্যাপি কাস্টমার</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu">
+        <div class="section-header">
+            <span>Our Delicious Offerings</span>
+            <h2>জনপ্রিয় স্পেশাল মেন্যু</h2>
+        </div>
+
+        <div class="menu-grid">
+            <!-- Card 1 -->
+            <div class="menu-card">
+                <div class="menu-img-container">
+                    <img class="menu-img" src="https://images.unsplash.com/photo-1586190848861-99aa4a171e90?auto=format&fit=crop&w=600&q=80" alt="Burger">
+                    <span class="menu-price">৳ ৩৫০</span>
+                </div>
+                <div class="menu-details">
+                    <h3>গ্রিল্ড বিফ বার্গার</h3>
+                    <p>রসালো বিফ প্যাটি, চিজ ও বিশেষ সিক্রেট সসের মনমাতানো কম্বিনেশন।</p>
+                    <div class="menu-footer">
+                        <div class="rating"><i class="fa-solid fa-star"></i> 4.9 (120+)</div>
+                        <button class="btn-add-cart" onclick="addToCart('গ্রিল্ড বিফ বার্গার', 350)"><i class="fa-solid fa-plus"></i> কার্ট</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="menu-card">
+                <div class="menu-img-container">
+                    <img class="menu-img" src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600&q=80" alt="Pizza">
+                    <span class="menu-price">৳ ৭৫০</span>
+                </div>
+                <div class="menu-details">
+                    <h3>চিজি পেপারনি পিৎজা</h3>
+                    <p>ইতালিয়ান স্টাইল ক্রাস্ট, প্রিমিয়াম মোজারেলা এবং ক্রিস্পি পেপারনি টপিংস।</p>
+                    <div class="menu-footer">
+                        <div class="rating"><i class="fa-solid fa-star"></i> 5.0 (210+)</div>
+                        <button class="btn-add-cart" onclick="addToCart('চিজি পেপারনি পিৎজা', 750)"><i class="fa-solid fa-plus"></i> কার্ট</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="menu-card">
+                <div class="menu-img-container">
+                    <img class="menu-img" src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=600&q=80" alt="BBQ Platter">
+                    <span class="menu-price">৳ ৮৫০</span>
+                </div>
+                <div class="menu-details">
+                    <h3>স্মোকি বিবিকিউ প্ল্যাটটার</h3>
+                    <p>কাঠকয়লায় পোড়ানো চিকেন ও বিফ রোস্টের সাথে পরোটা ও স্পেশাল সালাদ।</p>
+                    <div class="menu-footer">
+                        <div class="rating"><i class="fa-solid fa-star"></i> 4.8 (85+)</div>
+                        <button class="btn-add-cart" onclick="addToCart('স্মোকি বিবিকিউ প্ল্যাটটার', 850)"><i class="fa-solid fa-plus"></i> কার্ট</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="menu-card">
+                <div class="menu-img-container">
+                    <img class="menu-img" src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=600&q=80" alt="Dessert">
+                    <span class="menu-price">৳ ২৫০</span>
+                </div>
+                <div class="menu-details">
+                    <h3>চকলেট লাভা কেক</h3>
+                    <p>গরম মেল্টেড চকলেটে ভরা কেকের সাথে প্রিমিয়াম ভ্যানিলা আইসক্রিম।</p>
+                    <div class="menu-footer">
+                        <div class="rating"><i class="fa-solid fa-star"></i> 4.9 (140+)</div>
+                        <button class="btn-add-cart" onclick="addToCart('চকলেট লাভা কেক', 250)"><i class="fa-solid fa-plus"></i> কার্ট</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="about-container">
+            <div class="about-images">
+                <img src="https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?auto=format&fit=crop&w=500&q=80" alt="Restaurant Interior">
+                <img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?auto=format&fit=crop&w=500&q=80" alt="Chef Preparing Food" style="margin-top: 2rem;">
+            </div>
+            <div class="about-content">
+                <div class="hero-tag">আমাদের গল্প</div>
+                <h2>সেরা রেসিপি ও খাঁটি ভালোবাসায় প্রস্তুত খাবার</h2>
+                <p><strong>Food Paradise</strong> শুধুমাত্র একটি রেস্তোরাঁ নয়, এটি খাদ্যপ্রেমীদের আনন্দের আশ্রয়স্থল। আমরা প্রতিটি খাবারে ব্যবহার করি শতভাগ খাঁটি ও ফ্রেশ উপাদান। আমাদের এক্সপার্ট শেফদের হাতের জাদুতে সাধারণ খাবারও হয়ে ওঠে অনন্য এক অভিজ্ঞতা।</p>
+                <ul class="features-list">
+                    <li><i class="fa-solid fa-circle-check"></i> ১০০% হালাল ও হাইজিনিক কিচেন</li>
+                    <li><i class="fa-solid fa-circle-check"></i> প্রিমিয়াম কোয়ালিটি ও অথেন্টিক মসলা</li>
+                    <li><i class="fa-solid fa-circle-check"></i> দ্রুত হোম ডেলিভারি ও আরামদায়ক পরিবেশ</li>
+                </ul>
+                <a href="#menu" class="btn-red">আমাদের মেন্যু দেখুন</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Reservation Section -->
+    <section id="contact">
+        <div class="section-header">
+            <span>Get in Touch</span>
+            <h2>টেবিল বুক বা যোগাযোগ করুন</h2>
+        </div>
+
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>আমরা আপনার সেবায় প্রস্তুত</h3>
+                <p>পরিবার বা বন্ধুদের নিয়ে একটি সুন্দর সন্ধ্যা কাটাতে আজই আপনার পছন্দের টেবিল রিজার্ভ করুন।</p>
+                
+                <div class="contact-item">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <div>
+                        <strong>ঠিকানা:</strong>
+                        <p>ধানমন্ডি, ঢাকা, বাংলাদেশ</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <i class="fa-solid fa-phone"></i>
+                    <div>
+                        <strong>ফোন নম্বর:</strong>
+                        <p>+৮৮০ ১৭১২-৩৪৫৬৭৮</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <i class="fa-solid fa-envelope"></i>
+                    <div>
+                        <strong>ইমেইল:</strong>
+                        <p>info@foodparadise.com</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <form id="bookingForm" onsubmit="handleFormSubmit(event)">
+                    <div class="form-group">
+                        <label>আপনার নাম</label>
+                        <input type="text" placeholder="পুরো নাম লিখুন" required>
+                    </div>
+                    <div class="form-group">
+                        <label>মোবাইল নম্বর</label>
+                        <input type="tel" placeholder="০১৭xxxxxxxx" required>
+                    </div>
+                    <div class="form-group">
+                        <label>অতিথির সংখ্যা / বিস্তারিত</label>
+                        <textarea rows="3" placeholder="কতজনের টেবিল চান এবং কোনো বিশেষ চাওয়া আছে কি?"></textarea>
+                    </div>
+                    <button type="submit" class="btn-red" style="width: 100%; justify-content: center;">বুকিং কনফার্ম করুন</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <a href="#" class="logo" style="color: var(--secondary-white); margin-bottom: 1rem;">
+                    <i class="fa-solid fa-utensils"></i> Food Paradise
+                </a>
+                <p>Taste the Happiness – Fresh Food, Fresh Mood! সেরা স্বাদের খাবার পরিবেশন করাই আমাদের প্রতিশ্রুতি।</p>
+                <div class="social-links">
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>কুইক লিংক</h4>
+                <ul class="footer-links">
+                    <li><a href="#home">হোম</a></li>
+                    <li><a href="#menu">আমাদের মেন্যু</a></li>
+                    <li><a href="#about">আমাদের সম্পর্কে</a></li>
+                    <li><a href="#contact">টেবিল বুকিং</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>খোলার সময়সূচী</h4>
+                <p>শনিবার - বৃহস্পতিবার:<br> সকাল ১১:০০ - রাত ১১:০০</p>
+                <p>শুক্রবার:<br> দুপুর ২:০০ - রাত ১১:৩০</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; ২০২৬ Food Paradise. সর্বস্বত্ব সংরক্ষিত।</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Cart State
+        let cartItems = [];
+        const cartCountEl = document.getElementById('cartCount');
+
+        function addToCart(itemName, price) {
+            cartItems.push({ name: itemName, price: price });
+            cartCountEl.innerText = cartItems.length;
+            
+            // Animation Feedback
+            cartCountEl.style.transform = 'scale(1.3)';
+            setTimeout(() => {
+                cartCountEl.style.transform = 'scale(1)';
+            }, 200);
+
+            alert(`${itemName} কার্টে যোগ করা হয়েছে! 🛒`);
+        }
+
+        function viewCart() {
+            if (cartItems.length === 0) {
+                alert("আপনার কার্ট খালি! মেন্যু থেকে কিছু খাবার পছন্দ করুন।");
+                return;
+            }
+            let total = cartItems.reduce((sum, item) => sum + item.price, 0);
+            let itemsList = cartItems.map((item, index) => `${index + 1}. ${item.name} - ৳${item.price}`).join('\n');
+            alert(`🛒 আপনার কার্টের আইটেমসমূহ:\n\n${itemsList}\n\nমোট খরচ: ৳${total}`);
+        }
+
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            alert("ধন্যবাদ! আপনার টেবিল রিজার্ভেশন রিকোয়েস্ট সফলভাবে জমা হয়েছে। আমাদের প্রতিনিধি দ্রুত যোগাযোগ করবেন।");
+            e.target.reset();
+        }
+
+        // Mobile Nav Toggle
+        const mobileBtn = document.getElementById('mobileMenuBtn');
+        const navMenu = document.getElementById('navMenu');
+
+        mobileBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('show');
+        });
+
+        // Close mobile nav when clicking a link
+        document.querySelectorAll('#navMenu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('show');
+            });
+        });
+    </script>
+</body>
+</html>
